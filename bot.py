@@ -50,6 +50,7 @@ async def _8ball(ctx, *, question):
                 'Ask again later.',]
     await ctx.send(f'Question: {question}\nAnswer: {random.choice(responses)}')
 
+<<<<<<< HEAD
 #create a coin flip command
 @client.command(aliases=['flip'])
 async def coin(ctx):
@@ -108,3 +109,6 @@ async def say(ctx, *, content):
 
 
 client.run('ODk4NDU3NjkzNDE1Njg2MTQ0.YWkf7g.WFF-Gpw2m8CMYegGc4fJSVJomuE')
+=======
+client.run('token')   
+>>>>>>> 25b73c83d88e946ea2a25d3fe8c4fbdb6211e697
