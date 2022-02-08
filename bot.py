@@ -43,4 +43,4 @@ async def _8ball(ctx, *, question):
                 'Ask again later.',]
     await ctx.send(f'Question: {question}\nAnswer: {random.choice(responses)}')
 
-client.run('ODk4NDU3NjkzNDE1Njg2MTQ0.YWkf7g.XYAV3j7Swg4Wbi2xsX-KPKACOWk')   
+client.run('token')   
