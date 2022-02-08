@@ -42,6 +42,5 @@ async def _8ball(ctx, *, question):
                 'Reply hazy, try again.',
                 'Ask again later.',]
     await ctx.send(f'Question: {question}\nAnswer: {random.choice(responses)}')
-    
 
-client.run('ODk4NDU3NjkzNDE1Njg2MTQ0.YWkf7g.ui_zgShENOBf062dsr9fWBchnbk')   
+client.run('S0p_xtTtZJnoVaK5VHwvkm-XXMykg00j')   
