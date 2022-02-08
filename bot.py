@@ -1,9 +1,16 @@
 from ast import alias
 from http import client
 from tokenize import Token
+import os
 import discord
 import random
-import json
+from dotenv import load_dotenv
+
+
+# get the bot token from the .env file
+load_dotenv(dotenv_path= "D:\Coding\DiscordBot/Token.env")
+os.path.abspath(os.path.dirname(__file__))
+
 
 
 from discord.ext import commands
@@ -50,7 +57,7 @@ async def _8ball(ctx, *, question):
                 'Ask again later.',]
     await ctx.send(f'Question: {question}\nAnswer: {random.choice(responses)}')
 
-<<<<<<< HEAD
+
 #create a coin flip command
 @client.command(aliases=['flip'])
 async def coin(ctx):
@@ -107,8 +114,6 @@ async def info(ctx):
 async def say(ctx, *, content):
     await ctx.send(content)
 
+#run the bot with the token
+client.run(os.getenv('DISCORD_TOKEN'))
 
-client.run('ODk4NDU3NjkzNDE1Njg2MTQ0.YWkf7g.WFF-Gpw2m8CMYegGc4fJSVJomuE')
-=======
-client.run('token')   
->>>>>>> 25b73c83d88e946ea2a25d3fe8c4fbdb6211e697
