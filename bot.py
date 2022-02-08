@@ -87,6 +87,16 @@ async def unmute(ctx, member: discord.Member, *, reason=None):
     await member.remove_roles(discord.utils.get(ctx.guild.roles, name="Muted"))
     await ctx.send(f'{member} has been unmuted')
 
+
+@client.command()
+async def nick(ctx, member: discord.Member, *, nickname):
+    await member.edit(nick=nickname)
+    await ctx.send(f'{member} has been renamed to {nickname}')
+
+@client.command()
+async def avatar(ctx, member: discord.Member):
+    await ctx.send(f'{member.avatar_url}')
+
 @client.command()
 async def info(ctx):
     embed = discord.Embed(title="Info", description="Here are the commands you can use: Prefix is >", color=0xeee657)
@@ -97,6 +107,10 @@ async def info(ctx):
     embed.add_field(name="say", value="Make the bot say something.", inline=False)
     embed.add_field(name="mute", value="Get someone muted.", inline=False)
     embed.add_field(name="unmute", value="Unmute someone.", inline=False)
+    embed.add_field(name="nick", value="Change someone else's username.", inline=False)
+    embed.add_field(name="avatar", value="Get someone else avatar.", inline=False)
+    embed.set_footer(text="Made by: @Bloop#7070")
+    embed.set_thumbnail(url="https://images-na.ssl-images-amazon.com/images/I/51oxgH9Kl-L.png")
 
     await ctx.send(embed=embed)
 
