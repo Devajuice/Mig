@@ -6,8 +6,6 @@ import discord
 import random
 from dotenv import load_dotenv
 
-
-# get the bot token from the .env file
 load_dotenv(dotenv_path= "D:\Coding\DiscordBot/Token.env")
 os.path.abspath(os.path.dirname(__file__))
 
@@ -24,13 +22,11 @@ class MyBot(commands.Bot):
 async def on_ready():
     print('Bot is ready.')
 
-# create a msg when a player  has joined the server and send it to the channel
 @client.event
 async def on_member_join(member):
         channel = client.get_channel(66445656564456565)
         await channel.send(f'{member} has joined the server.')
 
-# create a msg when a player has left the server and send it to the channel
 @client.event
 async def on_member_remove(member):
         channel = client.get_channel(66445656564456565)
@@ -40,7 +36,6 @@ async def on_member_remove(member):
 async def ping(ctx):
     await ctx.send(f'Pong! {round(client.latency * 1000)}ms')
 
-# create a 8ball command
 @client.command(aliases=['8ball', 'test'])
 async def _8ball(ctx, *, question):
     responses = ['It is certain.',
@@ -57,15 +52,12 @@ async def _8ball(ctx, *, question):
                 'Ask again later.',]
     await ctx.send(f'Question: {question}\nAnswer: {random.choice(responses)}')
 
-
-#create a coin flip command
 @client.command(aliases=['flip'])
 async def coin(ctx):
     responses = ['Heads',
                 'Tails']
     await ctx.send(f'Flipping a coin... {random.choice(responses)}')
 
-#create a clear command with permission if the user does not have the permission, it will not work
 @client.command()
 @commands.has_permissions(manage_messages=True)
 async def clear(ctx, amount=2):
@@ -75,7 +67,6 @@ async def clear_error(ctx, error):
     if isinstance(error, commands.MissingPermissions):
         await ctx.send("You do not have permission to use this command.")   
 
-#create a mute command with permission if the user does not have the permission, print out You do not have permission
 @client.command()
 @commands.has_permissions(manage_messages=True)
 async def mute(ctx, member: discord.Member, *, reason=None):
@@ -109,11 +100,9 @@ async def info(ctx):
 
     await ctx.send(embed=embed)
 
-# create a say command
 @client.command()
 async def say(ctx, *, content):
     await ctx.send(content)
 
-#run the bot with the token
 client.run(os.getenv('DISCORD_TOKEN'))
 
