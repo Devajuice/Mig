@@ -52,15 +52,12 @@ async def _8ball(ctx, *, question):
                 'Ask again later.',]
     await ctx.send(f'Question: {question}\nAnswer: {random.choice(responses)}')
 
-
-#create a coin flip command
 @client.command(aliases=['flip'])
 async def coin(ctx):
     responses = ['Heads',
                 'Tails']
     await ctx.send(f'Flipping a coin... {random.choice(responses)}')
 
-#create a clear command with permission if the user does not have the permission, it will not work
 @client.command()
 @commands.has_permissions(manage_messages=True)
 async def clear(ctx, amount=2):
@@ -70,7 +67,6 @@ async def clear_error(ctx, error):
     if isinstance(error, commands.MissingPermissions):
         await ctx.send("You do not have permission to use this command.")   
 
-#create a mute command with permission if the user does not have the permission, print out You do not have permission
 @client.command()
 @commands.has_permissions(manage_messages=True)
 async def mute(ctx, member: discord.Member, *, reason=None):
@@ -104,11 +100,9 @@ async def info(ctx):
 
     await ctx.send(embed=embed)
 
-# create a say command
 @client.command()
 async def say(ctx, *, content):
     await ctx.send(content)
 
-#run the bot with the token
 client.run(os.getenv('DISCORD_TOKEN'))
 
