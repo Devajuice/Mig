@@ -8,9 +8,8 @@ import asyncio
 from dotenv import load_dotenv
 import pyjokes
 
-load_dotenv(dotenv_path= ".env")
-os.path.abspath(os.path.dirname(__file__))
-
+load_dotenv('Token.env')
+TOKEN = os.getenv('DISCORD_TOKEN')
 
 
 from discord.ext import commands
@@ -109,6 +108,10 @@ async def avatar(ctx, member: discord.Member):
     await ctx.send(f'{member.avatar_url}')
 
 @client.command()
+async def joke(ctx):
+    await ctx.send(pyjokes.get_joke())
+
+@client.command()
 async def help(ctx):
     embed = discord.Embed(title="Help", description="Here are the commands you can use: Prefix is >", color=0xeee657)
     embed.add_field(name="8ball", value="Ask the magic 8ball a question.", inline=False)
@@ -120,16 +123,12 @@ async def help(ctx):
     embed.add_field(name="unmute", value="Unmute someone.", inline=False)
     embed.add_field(name="nick", value="Change someone else's username.", inline=False)
     embed.add_field(name="avatar", value="Get someone else avatar.", inline=False)
+    embed.add_field(name="joke", value="Tell random jokes", inline=False)
     embed.set_footer(text="Made by: @Bloop#7070")
     embed.set_thumbnail(url="https://images-na.ssl-images-amazon.com/images/I/51oxgH9Kl-L.png")
 
     await ctx.send(embed=embed)
 
-
-
-@client.command()
-async def joke(ctx):
-    await ctx.send(pyjokes.get_joke())
 
 client.run(os.getenv('DISCORD_TOKEN'))
 
