@@ -4,6 +4,7 @@ from tokenize import Token
 import os
 import discord
 import random
+import asyncio
 from dotenv import load_dotenv
 
 load_dotenv(dotenv_path= "D:\Coding\DiscordBot/Token.env")
@@ -13,7 +14,7 @@ os.path.abspath(os.path.dirname(__file__))
 
 from discord.ext import commands
 
-client = commands.Bot(command_prefix='>')
+client = commands.Bot(command_prefix='>', help_command=None)
 class MyBot(commands.Bot):
     def __init__(self):
         super().__init__(help_command=None)
@@ -21,6 +22,11 @@ class MyBot(commands.Bot):
 @client.event
 async def on_ready():
     print('Bot is ready.')
+
+@client.event
+async def on_ready():
+    await client.change_presence(activity=discord.Game(name=">help | golo.tk"))
+    print('Bot is ready!')
 
 @client.event
 async def on_member_join(member):
@@ -87,6 +93,10 @@ async def unmute(ctx, member: discord.Member, *, reason=None):
     await member.remove_roles(discord.utils.get(ctx.guild.roles, name="Muted"))
     await ctx.send(f'{member} has been unmuted')
 
+@client.command()
+async def say(ctx, *, content):
+    await ctx.send(content)
+
 
 @client.command()
 async def nick(ctx, member: discord.Member, *, nickname):
@@ -98,8 +108,8 @@ async def avatar(ctx, member: discord.Member):
     await ctx.send(f'{member.avatar_url}')
 
 @client.command()
-async def info(ctx):
-    embed = discord.Embed(title="Info", description="Here are the commands you can use: Prefix is >", color=0xeee657)
+async def help(ctx):
+    embed = discord.Embed(title="Help", description="Here are the commands you can use: Prefix is >", color=0xeee657)
     embed.add_field(name="8ball", value="Ask the magic 8ball a question.", inline=False)
     embed.add_field(name="flip", value="Flip a coin.", inline=False)
     embed.add_field(name="clear", value="Clear a certain amount of messages.", inline=False)
@@ -114,9 +124,7 @@ async def info(ctx):
 
     await ctx.send(embed=embed)
 
-@client.command()
-async def say(ctx, *, content):
-    await ctx.send(content)
+
 
 client.run(os.getenv('DISCORD_TOKEN'))
 
