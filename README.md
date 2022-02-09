@@ -62,5 +62,10 @@ made by discord.py
       <td> Get a avatar of a user</td>
       <td> >avatar @user</td>
     </tr>
+    <tr>
+      <td>Joke</td>
+      <td> Tell random jokes</td>
+      <td> >joke</td>
+    </tr>
       
     
