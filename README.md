@@ -62,11 +62,5 @@ made by discord.py
       <td> Get a avatar of a user</td>
       <td> >avatar @user</td>
     </tr>
-
-    
-      
-      
-    
-
       
     
