@@ -1,6 +1,7 @@
 # Mig
 A bot for discord 
-made by discord.py
+made with discord.py
+https://realxxmonkey.github.io/Mig/
 
 <h1>Bot prefix is ></h1>
 
@@ -61,6 +62,11 @@ made by discord.py
       <td>Avatar</td>
       <td> Get a avatar of a user</td>
       <td> >avatar @user</td>
+    </tr>
+    <tr>
+      <td>Joke</td>
+      <td> Tell random jokes</td>
+      <td> >joke</td>
     </tr>
       
     
