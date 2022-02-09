@@ -1,6 +1,7 @@
 # Mig
 A bot for discord 
-made by discord.py
+made with discord.py
+https://realxxmonkey.github.io/Mig/
 
 <h1>Bot prefix is ></h1>
 
