@@ -6,8 +6,9 @@ import discord
 import random
 import asyncio
 from dotenv import load_dotenv
+import pyjokes
 
-load_dotenv(dotenv_path= "D:\Coding\DiscordBot/Token.env")
+load_dotenv(dotenv_path= ".env")
 os.path.abspath(os.path.dirname(__file__))
 
 
@@ -125,6 +126,10 @@ async def help(ctx):
     await ctx.send(embed=embed)
 
 
+
+@client.command()
+async def joke(ctx):
+    await ctx.send(pyjokes.get_joke())
 
 client.run(os.getenv('DISCORD_TOKEN'))
 
