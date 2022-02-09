@@ -32,5 +32,41 @@ made by discord.py
       <td>Clear the chat with a amount</td>
       <td> >clear (amount) remove the brackets</td>
     </tr>
+    <tr>
+      <td>Ping</td>
+      <td>Pings the bot</td>
+      <td> >ping</td>
+    </tr>
+    <tr>
+      <td>Say</td>
+      <td> Make the bot say anything</td>
+      <td> >say (say anything you want) remove the brackets
+    </tr>
+    <tr>
+      <td>Mute</td>
+      <td> Mute someone</td>
+      <td> >mute @user</td>
+    </tr>
+    <tr>
+      <td>Unmute</td>
+      <td> Unmute someone whos muted</td>
+      <td> >unmute @user</td>
+    </tr>
+    <tr>
+      <td>Nick</td>
+      <td> Change your nickname in the server</td>
+      <td> >nick @user (New nickname) remove the brackets</td>
+    </tr>
+    <tr>
+      <td>Avatar</td>
+      <td> Get a avatar of a user</td>
+      <td> >avatar @user</td>
+    </tr>
+
+    
+      
+      
+    
+
       
     
