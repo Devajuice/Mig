@@ -79,6 +79,11 @@ https://realxxmonkey.github.io/Mig/
       <td> >whois @user</td>
     </tr>
     <tr>
+      <td>Meme</td>
+      <td> Get memes</td>
+      <td> >meme</td>
+    </tr>
+    <tr>
       <td>Joke</td>
       <td> Tell random jokes</td>
       <td> >joke</td>
