@@ -54,6 +54,11 @@ https://realxxmonkey.github.io/Mig/
       <td> >unmute @user</td>
     </tr>
     <tr>
+      <td>Kick</td>
+      <td> Kick someone from the server.</td>
+      <td> >kick @user reason</td>
+    </tr>
+    <tr>
       <td>Nick</td>
       <td> Change your nickname in the server</td>
       <td> >nick @user (New nickname) remove the brackets</td>
