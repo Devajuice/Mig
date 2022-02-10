@@ -126,6 +126,15 @@ async def on_command_error(ctx, error):
     if isinstance(error, commands.CommandNotFound):
         await ctx.send('Command not found. Please use >help for a list of commands.')
 
+@client.command()
+@commands.has_permissions(kick_members=True)
+async def kick(ctx, member: discord.Member, *, reason=None):
+    await member.kick(reason=reason)
+    await ctx.send(f'{member} has been kicked')
+@kick.error
+async def kick_error(ctx, error):
+    if isinstance(error, commands.MissingPermissions):
+        await ctx.send("You do not have permission to use this command.")
 
 @client.command()
 async def help(ctx):
@@ -137,6 +146,7 @@ async def help(ctx):
     embed.add_field(name="say", value="Make the bot say something.", inline=False)
     embed.add_field(name="mute", value="Get someone muted.", inline=False)
     embed.add_field(name="unmute", value="Unmute someone.", inline=False)
+    embed.add_field(name="kick", value="Kick someone from the server.", inline=False)
     embed.add_field(name="nick", value="Change someone else's username.", inline=False)
     embed.add_field(name="avatar", value="Get someone else avatar.", inline=False)
     embed.add_field(name="joke", value="Tell random jokes", inline=False)
