@@ -147,6 +147,17 @@ async def ban_error(ctx, error):
         await ctx.send("You do not have permission to use this command.")
 
 @client.command()
+async def whois(ctx, member: discord.Member):
+    embed = discord.Embed(title=f'{member}', description=f'{member.id}', color=member.color)
+    embed.set_thumbnail(url=member.avatar_url)
+    embed.add_field(name='Highest Role', value=member.top_role)
+    embed.add_field(name='Joined Server', value=member.joined_at)
+    embed.add_field(name='Account Created', value=member.created_at)
+    embed.add_field(name='Roles', value=' '.join([role.mention for role in member.roles if role != ctx.guild.default_role]))
+    await ctx.send(embed=embed)
+
+
+@client.command()
 async def help(ctx):
     embed = discord.Embed(title="Help", description="Here are the commands you can use: Prefix is > aslo vist https://realxxmonkey.github.io/Mig/", color=0xeee657)
     embed.add_field(name="8ball", value="Ask the magic 8ball a question.", inline=False)
