@@ -1,4 +1,5 @@
 from ast import alias
+from distutils import command
 from http import client
 from tokenize import Token
 import os
@@ -97,11 +98,15 @@ async def unmute(ctx, member: discord.Member, *, reason=None):
 async def say(ctx, *, content):
     await ctx.send(content)
 
-
 @client.command()
+@commands.has_permissions(manage_nicknames=True)
 async def nick(ctx, member: discord.Member, *, nickname):
     await member.edit(nick=nickname)
-    await ctx.send(f'{member} has been renamed to {nickname}')
+    await ctx.send(f'{member} has been nicknamed')
+@nick.error
+async def nick_error(ctx, error):
+    if isinstance(error, commands.MissingPermissions):
+        await ctx.send("You do not have permission to use this command.")
 
 @client.command()
 async def avatar(ctx, member: discord.Member):
@@ -110,6 +115,13 @@ async def avatar(ctx, member: discord.Member):
 @client.command()
 async def joke(ctx):
     await ctx.send(pyjokes.get_joke())
+
+#create a command not found error message when the user sends a command that is not found in the bot 
+@client.event
+async def on_command_error(ctx, error):
+    if isinstance(error, commands.CommandNotFound):
+        await ctx.send('Command not found. Please use >help for a list of commands.')
+        
 
 @client.command()
 async def help(ctx):
