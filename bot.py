@@ -93,6 +93,10 @@ async def mute_error(ctx, error):
 async def unmute(ctx, member: discord.Member, *, reason=None):
     await member.remove_roles(discord.utils.get(ctx.guild.roles, name="Muted"))
     await ctx.send(f'{member} has been unmuted')
+@unmute.error
+async def unmute_error(ctx, error):
+    if isinstance(error, commands.MissingPermissions):
+        await ctx.send("You do not have permission to use this command.")
 
 @client.command()
 async def say(ctx, *, content):
@@ -121,7 +125,7 @@ async def joke(ctx):
 async def on_command_error(ctx, error):
     if isinstance(error, commands.CommandNotFound):
         await ctx.send('Command not found. Please use >help for a list of commands.')
-        
+
 
 @client.command()
 async def help(ctx):
