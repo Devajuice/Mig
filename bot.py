@@ -137,6 +137,16 @@ async def kick_error(ctx, error):
         await ctx.send("You do not have permission to use this command.")
 
 @client.command()
+@commands.has_permissions(ban_members=True)
+async def ban(ctx, member: discord.Member, *, reason=None):
+    await member.ban(reason=reason)
+    await ctx.send(f'{member} has been banned')
+@ban.error
+async def ban_error(ctx, error):
+    if isinstance(error, commands.MissingPermissions):
+        await ctx.send("You do not have permission to use this command.")
+
+@client.command()
 async def help(ctx):
     embed = discord.Embed(title="Help", description="Here are the commands you can use: Prefix is > aslo vist https://github.com/Realxxmonkey/Mig", color=0xeee657)
     embed.add_field(name="8ball", value="Ask the magic 8ball a question.", inline=False)
@@ -146,6 +156,7 @@ async def help(ctx):
     embed.add_field(name="say", value="Make the bot say something.", inline=False)
     embed.add_field(name="mute", value="Get someone muted.", inline=False)
     embed.add_field(name="unmute", value="Unmute someone.", inline=False)
+    embed.add_field(name="ban", value="Ban someone from the server.", inline=False)
     embed.add_field(name="kick", value="Kick someone from the server.", inline=False)
     embed.add_field(name="nick", value="Change someone else's username.", inline=False)
     embed.add_field(name="avatar", value="Get someone else avatar.", inline=False)
