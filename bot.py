@@ -138,7 +138,7 @@ async def kick_error(ctx, error):
 
 @client.command()
 async def help(ctx):
-    embed = discord.Embed(title="Help", description="Here are the commands you can use: Prefix is >", color=0xeee657)
+    embed = discord.Embed(title="Help", description="Here are the commands you can use: Prefix is > aslo vist https://github.com/Realxxmonkey/Mig", color=0xeee657)
     embed.add_field(name="8ball", value="Ask the magic 8ball a question.", inline=False)
     embed.add_field(name="flip", value="Flip a coin.", inline=False)
     embed.add_field(name="clear", value="Clear a certain amount of messages.", inline=False)
