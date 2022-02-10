@@ -59,6 +59,11 @@ https://realxxmonkey.github.io/Mig/
       <td> >kick @user reason</td>
     </tr>
     <tr>
+      <td>Ban</td>
+      <td> Ban someone from the server</td>
+      <td> >ban @user reson</td>
+    </tr>
+    <tr>
       <td>Nick</td>
       <td> Change your nickname in the server</td>
       <td> >nick @user (New nickname) remove the brackets</td>
