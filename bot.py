@@ -5,6 +5,7 @@ from tokenize import Token
 import os
 import discord
 import random
+import aiohttp 
 import asyncio
 from dotenv import load_dotenv
 import pyjokes
@@ -156,6 +157,16 @@ async def whois(ctx, member: discord.Member):
     embed.add_field(name='Roles', value=' '.join([role.mention for role in member.roles if role != ctx.guild.default_role]))
     await ctx.send(embed=embed)
 
+async def meme(ctx):
+    async with aiohttp.ClientSession() as session:
+        async with session.get('https://meme-api.herokuapp.com/gimme/dankmemes') as r:
+            meme = await r.json()
+    embed = discord.Embed(title=meme['title'], url=meme['postLink'], color=0x00ff00)
+    embed.set_image(url=meme['url'])
+    await ctx.send(embed=embed)
+
+
+
 
 @client.command()
 async def help(ctx):
@@ -171,7 +182,9 @@ async def help(ctx):
     embed.add_field(name="kick", value="Kick someone from the server.", inline=False)
     embed.add_field(name="nick", value="Change someone else's username.", inline=False)
     embed.add_field(name="avatar", value="Get someone else avatar.", inline=False)
-    embed.add_field(name="joke", value="Tell random jokes", inline=False)
+    embed.add_field(name="whois", value="Get information of someone.", inline=False)
+    embed.add_field(name="meme", value="Get memes.", inline=False)
+    embed.add_field(name="joke", value="Tell random jokes.", inline=False)
     embed.set_footer(text="Made by: @Bloop#7070")
     embed.set_thumbnail(url="https://images-na.ssl-images-amazon.com/images/I/51oxgH9Kl-L.png")
 
