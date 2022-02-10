@@ -74,6 +74,11 @@ https://realxxmonkey.github.io/Mig/
       <td> >avatar @user</td>
     </tr>
     <tr>
+      <td>Whois</td>
+      <td> Get information of a user</td>
+      <td> >whois @user</td>
+    </tr>
+    <tr>
       <td>Joke</td>
       <td> Tell random jokes</td>
       <td> >joke</td>
