@@ -46,7 +46,7 @@ https://realxxmonkey.github.io/Mig/
     <tr>
       <td>Say</td>
       <td> Make the bot say anything</td>
-      <td> >say (say anything you want) remove the brackets
+      <td> >say (say anything) remove the brackets
     </tr>
     <tr>
       <td>Mute</td>
