@@ -157,6 +157,7 @@ async def whois(ctx, member: discord.Member):
     embed.add_field(name='Roles', value=' '.join([role.mention for role in member.roles if role != ctx.guild.default_role]))
     await ctx.send(embed=embed)
 
+@client.command()
 async def meme(ctx):
     async with aiohttp.ClientSession() as session:
         async with session.get('https://meme-api.herokuapp.com/gimme/dankmemes') as r:
@@ -164,8 +165,6 @@ async def meme(ctx):
     embed = discord.Embed(title=meme['title'], url=meme['postLink'], color=0x00ff00)
     embed.set_image(url=meme['url'])
     await ctx.send(embed=embed)
-
-
 
 
 @client.command()
