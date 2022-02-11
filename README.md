@@ -19,6 +19,11 @@ https://realxxmonkey.github.io/Mig/
       <td> >help </td>
     </tr>
     <tr>
+      <td>Info</td>
+      <td>Get the information of the bot</td>
+      <td> >info</td>
+    </tr>
+    <tr>
       <td>8ball</td>
       <td>Ask the magic 8ball a question.</td>
       <td> >8ball (question)  remove the brackets</td>
@@ -67,6 +72,11 @@ https://realxxmonkey.github.io/Mig/
       <td>Nick</td>
       <td> Change your nickname in the server</td>
       <td> >nick @user (New nickname) remove the brackets</td>
+    </tr>
+    <tr>
+      <td>Invite</td>
+      <td>Get an invite link for the bot</td>
+      <td> >invite</td>
     </tr>
     <tr>
       <td>Avatar</td>
