@@ -170,24 +170,11 @@ async def meme(ctx):
 
 @client.command()
 async def help(ctx):
-    embed = discord.Embed(title="Help", description="Here are the commands you can use: Prefix is > aslo vist https://realxxmonkey.github.io/Mig/", color=0xeee657)
-    embed.add_field(name="8ball", value="Ask the magic 8ball a question.", inline=False)
-    embed.add_field(name="flip", value="Flip a coin.", inline=False)
-    embed.add_field(name="clear", value="Clear a certain amount of messages.", inline=False)
-    embed.add_field(name="ping", value="Ping the bot.", inline=False)
-    embed.add_field(name="ban", value="Ban someone from the server.", inline=False)
-    embed.add_field(name="kick", value="Kick someone from the server.", inline=False)
-    embed.add_field(name="mute", value="Get someone muted.", inline=False)
-    embed.add_field(name="unmute", value="Unmute someone.", inline=False)
-    embed.add_field(name="nick", value="Change someone else's username.", inline=False)
-    embed.add_field(name="say", value="Make the bot say something.", inline=False)
-    embed.add_field(name="avatar", value="Get someone else avatar.", inline=False)
-    embed.add_field(name="whois", value="Get information of someone.", inline=False)
-    embed.add_field(name="meme", value="Get memes.", inline=False)
-    embed.add_field(name="joke", value="Tell random jokes.", inline=False)
+    embed = discord.Embed(title="Help", description="Here are the commands you can use: Prefix is > for more information of commands visit https://realxxmonkey.github.io/Mig/", color=0xeee657)
+    embed.add_field(name="Moderation", value="kick,mute,unmute,ban,clear,nick")
+    embed.add_field(name="Fun", value="8ball,flip,say,joke,whois,avatar,meme")
     embed.set_footer(text="Made by: @Bloop#7070")
     embed.set_thumbnail(url="https://images-na.ssl-images-amazon.com/images/I/51oxgH9Kl-L.png")
-
     await ctx.send(embed=embed)
 
 
