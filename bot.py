@@ -158,6 +158,20 @@ async def whois(ctx, member: discord.Member):
     await ctx.send(embed=embed)
 
 @client.command()
+async def info(ctx):
+    embed = discord.Embed(title='Bot Info', description='This is a bot made by @Bloop#7070', color=0x00ff00)
+    embed.add_field(name='Bot Name', value='Mig')
+    embed.add_field(name='Bot Creator', value='Bloop#7070')
+    embed.add_field(name='Bot Invite', value='https://discord.com/api/oauth2/authorize?client_id=898457693415686144&permissions=8&scope=bot')
+    embed.add_field(name='Bot Source Code', value='https://github.com/Realxxmonkey/Mig')
+    embed.set_thumbnail(url="https://images-ext-1.discordapp.net/external/ZFsnZ5W1xalBiv9_GlzcQk-MQhptIxawsafxOKr9B8A/%3Fsize%3D1024/https/cdn.discordapp.com/avatars/898457693415686144/44f65e0ab8d728ece08d74691e9a4564.webp")
+    await ctx.send(embed=embed)
+ 
+@client.command()
+async def invite(ctx):
+    await ctx.send('https://discord.com/api/oauth2/authorize?client_id=898457693415686144&permissions=8&scope=bot')
+
+@client.command()
 async def meme(ctx):
     async with aiohttp.ClientSession() as session:
         async with session.get('https://meme-api.herokuapp.com/gimme/dankmemes') as r:
@@ -172,6 +186,7 @@ async def help(ctx):
     embed = discord.Embed(title="Help", description="Here are the commands you can use: Prefix is > for more information of commands visit https://realxxmonkey.github.io/Mig/", color=0xeee657)
     embed.add_field(name="Moderation", value="kick,mute,unmute,ban,clear,nick")
     embed.add_field(name="Fun", value="8ball,flip,say,joke,whois,avatar,meme")
+    embed.add_field(name="General", value="help,info,ping,invite")
     embed.set_footer(text="Made by: @Bloop#7070")
     embed.set_thumbnail(url="https://images-na.ssl-images-amazon.com/images/I/51oxgH9Kl-L.png")
     await ctx.send(embed=embed)
