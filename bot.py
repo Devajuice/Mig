@@ -7,6 +7,8 @@ import discord
 import random
 import aiohttp 
 import asyncio
+import datetime
+import time
 from dotenv import load_dotenv
 import pyjokes
 
@@ -180,12 +182,15 @@ async def meme(ctx):
     embed.set_image(url=meme['url'])
     await ctx.send(embed=embed)
 
+@client.command()
+async def kill(ctx, member: discord.Member):
+    await ctx.send(f'{member} has been killed by {ctx.author}')
 
 @client.command()
 async def help(ctx):
     embed = discord.Embed(title="Help", description="Here are the commands you can use: Prefix is > for more information of commands visit https://realxxmonkey.github.io/Mig/", color=0xeee657)
     embed.add_field(name="Moderation", value="kick,mute,unmute,ban,clear,nick")
-    embed.add_field(name="Fun", value="8ball,flip,say,joke,whois,avatar,meme")
+    embed.add_field(name="Fun", value="8ball,flip,say,joke,whois,avatar,meme, kill")
     embed.add_field(name="General", value="help,info,ping,invite")
     embed.set_footer(text="Made by: @Bloop#7070")
     embed.set_thumbnail(url="https://images-na.ssl-images-amazon.com/images/I/51oxgH9Kl-L.png")

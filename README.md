@@ -82,6 +82,10 @@ https://realxxmonkey.github.io/Mig/
       <td>Meme</td>
       <td> Get memes</td>
       <td> >meme</td>
+    <tr>
+      <td>Kill</td>
+      <td> Kill someone in the server</td>
+      <td> >kill @user</td>
     </tr>
     <tr>
       <td>Joke</td>
