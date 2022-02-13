@@ -34,9 +34,9 @@ https://realxxmonkey.github.io/Mig/
       <td> >flip</td>
     </tr>
     <tr>
-      <td>Clear</td>
-      <td>Clear the chat with a amount</td>
-      <td> >clear (amount) remove the brackets</td>
+      <td>Purge</td>
+      <td>Purges the chat with a amount</td>
+      <td> >purge (amount) remove the brackets</td>
     </tr>
     <tr>
       <td>Ping</td>
