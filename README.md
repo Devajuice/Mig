@@ -69,6 +69,10 @@ https://realxxmonkey.github.io/Mig/
       <td> >ban @user reson</td>
     </tr>
     <tr>
+      <td>Unban</td>
+      <td> Unban someone who is banned</td>
+      <td> >unban user#1010</td>
+    <tr>
       <td>Nick</td>
       <td> Change your nickname in the server</td>
       <td> >nick @user (New nickname) remove the brackets</td>
