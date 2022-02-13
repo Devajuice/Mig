@@ -1,8 +1,11 @@
 from ast import alias
+from cProfile import label
 from distutils import command
 from http import client
+from msilib.schema import Component
 from tokenize import Token
 import os
+from unicodedata import name
 import discord
 import random
 import aiohttp 
@@ -15,8 +18,9 @@ import pyjokes
 load_dotenv('Token.env')
 TOKEN = os.getenv('DISCORD_TOKEN')
 
-
 from discord.ext import commands
+from discord import Client
+from discord import Button, ButtonStyle, Embed, SelectMenu, SelectOption
 
 client = commands.Bot(command_prefix='>', help_command=None)
 class MyBot(commands.Bot):
@@ -32,19 +36,10 @@ async def on_ready():
     await client.change_presence(activity=discord.Game(name=">help | golo.tk"))
     print('Bot is ready!')
 
-@client.event
-async def on_member_join(member):
-        channel = client.get_channel(66445656564456565)
-        await channel.send(f'{member} has joined the server.')
-
-@client.event
-async def on_member_remove(member):
-        channel = client.get_channel(66445656564456565)
-        await channel.send(f'{member} has left the server.')
-
+#create a ping command the sends the ping in a embed 
 @client.command()
 async def ping(ctx):
-    await ctx.send(f'Pong! {round(client.latency * 1000)}ms')
+    await ctx.send(embed=Embed(title="Pong!", description="🔴The ping is: " + str(round(client.latency * 1000)) + "ms", color=0x00ff00))
 
 @client.command(aliases=['8ball', 'test'])
 async def _8ball(ctx, *, question):
