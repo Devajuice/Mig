@@ -143,8 +143,27 @@ async def kick_error(ctx, error):
 @commands.has_permissions(ban_members=True)
 async def ban(ctx, member: discord.Member, *, reason=None):
     await member.ban(reason=reason)
-    await ctx.send(f'{member} has been banned')
+    await ctx.send(f'Banned {member.mention}')
 @ban.error
+async def ban_error(ctx, error):
+    if isinstance(error, commands.MissingPermissions):
+        await ctx.send("You do not have permission to use this command.")
+
+@client.command()
+@commands.has_permissions(ban_members=True)
+async def unban(ctx, *, member):
+    banned_users = await ctx.guild.bans()
+    member_name, member_discriminator = member.split('#')
+
+    for ban_entry in banned_users:
+        user = ban_entry.user
+
+        if (user.name, user.discriminator) == (member_name, member_discriminator):
+            await ctx.guild.unban(user)
+            await ctx.send(f'Unbanned {user.mention}')
+            return
+
+@unban.error
 async def ban_error(ctx, error):
     if isinstance(error, commands.MissingPermissions):
         await ctx.send("You do not have permission to use this command.")
@@ -189,7 +208,7 @@ async def kill(ctx, member: discord.Member):
 @client.command()
 async def help(ctx):
     embed = discord.Embed(title="Help", description="Here are the commands you can use: Prefix is > for more information of commands visit https://realxxmonkey.github.io/Mig/", color=0xeee657)
-    embed.add_field(name="Moderation", value="kick,mute,unmute,ban,clear,nick")
+    embed.add_field(name="Moderation", value="kick,mute,unmute,ban,unban,clear,nick")
     embed.add_field(name="Fun", value="8ball,flip,say,joke,whois,avatar,meme, kill")
     embed.add_field(name="General", value="help,info,ping,invite")
     embed.set_footer(text="Made by: @Bloop#7070")
