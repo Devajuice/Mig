@@ -3,6 +3,7 @@ from cProfile import label
 from distutils import command
 from http import client
 from msilib.schema import Component
+from pyexpat.errors import messages
 from tokenize import Token
 import os
 from unicodedata import name
@@ -35,8 +36,7 @@ async def on_ready():
 async def on_ready():
     await client.change_presence(activity=discord.Game(name=">help | golo.tk"))
     print('Bot is ready!')
-
-#create a ping command the sends the ping in a embed 
+ 
 @client.command()
 async def ping(ctx):
     await ctx.send(embed=Embed(title="Pong!", description="🔴The ping is: " + str(round(client.latency * 1000)) + "ms", color=0x00ff00))
@@ -65,12 +65,19 @@ async def coin(ctx):
 
 @client.command()
 @commands.has_permissions(manage_messages=True)
-async def clear(ctx, amount=2):
+async def purge(ctx, amount=5):
+    channel = ctx.message.channel
+    messages = []
+    async for message in channel.history(limit=int(amount) + 1):
+        messages.append(message)
+    await ctx.message.delete()
     await ctx.channel.purge(limit=amount)
-@clear.error
-async def clear_error(ctx, error):
+    await ctx.send(f'Deleted {len(messages)} messages.')
+@purge.error
+async def purge_error(ctx, error):
     if isinstance(error, commands.MissingPermissions):
-        await ctx.send("You do not have permission to use this command.")   
+        await ctx.send('You do not have permission to use this command.')
+
 
 @client.command()
 @commands.has_permissions(manage_messages=True)
@@ -118,7 +125,6 @@ async def avatar(ctx, member: discord.Member):
 async def joke(ctx):
     await ctx.send(pyjokes.get_joke())
 
-#create a command not found error message when the user sends a command that is not found in the bot 
 @client.event
 async def on_command_error(ctx, error):
     if isinstance(error, commands.CommandNotFound):
@@ -203,7 +209,7 @@ async def kill(ctx, member: discord.Member):
 @client.command()
 async def help(ctx):
     embed = discord.Embed(title="Help", description="Here are the commands you can use: Prefix is > for more information of commands visit https://realxxmonkey.github.io/Mig/", color=0xeee657)
-    embed.add_field(name="Moderation", value="kick,mute,unmute,ban,unban,clear,nick")
+    embed.add_field(name="Moderation", value="kick,mute,unmute,ban,unban,purge,nick")
     embed.add_field(name="Fun", value="8ball,flip,say,joke,whois,avatar,meme, kill")
     embed.add_field(name="General", value="help,info,ping,invite")
     embed.set_footer(text="Made by: @Bloop#7070")
