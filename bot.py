@@ -39,7 +39,7 @@ async def on_ready():
  
 @client.command()
 async def ping(ctx):
-    await ctx.send(embed=Embed(title="Pong!", description="🔴The ping is: " + str(round(client.latency * 1000)) + "ms", color=0x00ff00))
+    await ctx.send(embed=Embed(title="Pong!", description="🟢The ping is: " + str(round(client.latency * 1000)) + "ms", color=0x00ff00))
 
 @client.command(aliases=['8ball', 'test'])
 async def _8ball(ctx, *, question):
